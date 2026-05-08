@@ -11,6 +11,7 @@ const authRouter = require("./controllers/auth");
 const usersRouter = require("./controllers/users");
 const moviesRouter = require("./controllers/movies");
 const postsRouter = require("./controllers/posts");
+const commentsRouter = require("./controllers/comments");
 require("./db/connection");
 
 app.use(cors());
@@ -24,6 +25,8 @@ app.use("/auth", authRouter);
 app.use("/users", usersRouter);
 app.use("/movies", moviesRouter);
 app.use("/", postsRouter);
+app.use("/", commentsRouter);
+
 app.listen(3000, () => {
   console.log("The express app is ready!");
 });
