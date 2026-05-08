@@ -10,6 +10,7 @@ const logger = require("morgan");
 const authRouter = require("./controllers/auth");
 const usersRouter = require("./controllers/users");
 const moviesRouter = require("./controllers/movies");
+const postsRouter = require("./controllers/posts");
 require("./db/connection");
 
 app.use(cors());
@@ -22,6 +23,7 @@ app.use("/auth", authRouter);
 // app.use("/test-jwt", testJwtRouter);
 app.use("/users", usersRouter);
 app.use("/movies", moviesRouter);
+app.use("/", postsRouter);
 app.listen(3000, () => {
   console.log("The express app is ready!");
 });

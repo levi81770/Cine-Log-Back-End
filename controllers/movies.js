@@ -16,7 +16,7 @@ router.get("/genres/all", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1
-    const limit = parseInt(req.query.limit) || 20
+    const limit = 20
     const skip = (page - 1) * limit
 
     const query = {}
@@ -28,12 +28,14 @@ router.get("/", async (req, res) => {
       Movie.find(query).skip(skip).limit(limit).sort({ year: -1 }),
       Movie.countDocuments(query)
     ]);
+
     res.json({ 
       movies,
       currentPage: page,
       totalPages: Math.ceil(total / limit),
       totalMovies: total
     })
+    
   } catch (err) {
     res.status(500).json({ err: err.message });
   }
