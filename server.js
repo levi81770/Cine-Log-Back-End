@@ -6,9 +6,10 @@ const cors = require("cors");
 const logger = require("morgan");
 
 
-const testJwtRouter = require("./controllers/test-jwt");
+// const testJwtRouter = require("./controllers/test-jwt");
 const authRouter = require("./controllers/auth");
 const usersRouter = require("./controllers/users");
+const moviesRouter = require("./controllers/movies");
 require("./db/connection");
 
 app.use(cors());
@@ -18,9 +19,9 @@ app.use(logger("dev"));
 // Routes go here
 
 app.use("/auth", authRouter);
-app.use("/test-jwt", testJwtRouter);
+// app.use("/test-jwt", testJwtRouter);
 app.use("/users", usersRouter);
-
+app.use("/movies", moviesRouter);
 app.listen(3000, () => {
   console.log("The express app is ready!");
 });

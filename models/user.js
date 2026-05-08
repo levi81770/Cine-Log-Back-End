@@ -5,12 +5,12 @@ const userSchema = new mongoose.Schema({
   hashedPassword: String,
 });
 
-userSchema.set("toJSON", {
-  transform: (doc, ret) => {
-    delete ret.hashedPassword;
-    // return ret;
-  },
-});
+// userSchema.set("toJSON", {
+//   transform: (doc, ret) => {
+//     delete ret.hashedPassword;
+//     // return ret;
+//   },
+// });
 
 const User = mongoose.model('User', userSchema);
 
