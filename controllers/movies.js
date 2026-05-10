@@ -42,9 +42,9 @@ router.get("/", async (req, res) => {
 })
 
 // GET /movies/:id
-router.get("/:id", async (req, res) => {
+router.get("/:movieId", async (req, res) => {
   try {
-    const movie = await Movie.findById(req.params.id)
+    const movie = await Movie.findById(req.params.movieId)
     if (!movie) return res.status(404).json({ err: "Movie not found." })
     res.json(movie)
   } catch (err) {

@@ -29,6 +29,19 @@ router.post("/movies/:movieId/posts", verifyToken, async (req, res) => {
   }
 })
 
+router.get("/posts/:postId", async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.postId)
+      .populate("author", "username")
+
+    if (!post) return res.status(404).json({ error: "Post not found" });
+
+    res.json(post);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+})
+
 router.put("/posts/:postId", verifyToken, async (req, res) => {
   try {
     const post = await Post.findById(req.params.postId)
