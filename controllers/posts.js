@@ -33,6 +33,7 @@ router.get("/posts/:postId", async (req, res) => {
   try {
     const post = await Post.findById(req.params.postId)
       .populate("author", "username")
+      .populate("movie", "title");
 
     if (!post) return res.status(404).json({ error: "Post not found" });
 
