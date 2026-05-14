@@ -14,7 +14,7 @@ const postsRouter = require("./controllers/posts");
 const commentsRouter = require("./controllers/comments");
 require("./db/connection");
 
-app.use(cors());
+app.use(cors({ origin: "https://cinelog81.netlify.app" }));
 app.use(express.json());
 app.use(logger("dev"));
 
