@@ -4,6 +4,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const logger = require("morgan");
+const PORT = process.env.PORT || 3000;
 
 
 // const testJwtRouter = require("./controllers/test-jwt");
@@ -27,6 +28,6 @@ app.use("/movies", moviesRouter);
 app.use("/", postsRouter);
 app.use("/", commentsRouter);
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log("The express app is ready!");
 });
